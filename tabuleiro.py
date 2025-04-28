@@ -5,6 +5,13 @@ class JogoDaVelha:
          '4': ' ', '5': ' ', '6': ' ',
          '1': ' ', '2': ' ', '3': ' '
          }
+       self.rodada = 0
+
+  def getRodada(self):
+    return self.rodada
+
+  def setRodada(self, numeroRodada):
+    self.rodada = numeroRodada
 
   def ExibirTabuleiro(self):
     print("┌───┬───┬───┐")
@@ -19,12 +26,10 @@ class JogoDaVelha:
      jogardnv = True
      while jogardnv:
       while not self.Vencedor() or not self.Velha():
-          rodada = 0
           self.ExibirTabuleiro()
           
-          posicao = input(f"Vez de {self.ProximoJogador(rodada)}: ")
-          self.ValidarPosicao(posicao, rodada)
-          return rodada
+          posicao = input(f"Vez de {self.ProximoJogador()}: ")
+          self.ValidarPosicao(posicao)
       if self.Velha():
         print("fim de jogo: deu velha!")
         novojogo = input("Jogar novamente?(S/N)")
@@ -36,7 +41,8 @@ class JogoDaVelha:
         if novojogo == 'N' or novojogo == 'n':
           jogardnv = False
   
-  def ProximoJogador(self, rodada):
+  def ProximoJogador(self):
+    rodada = self.getRodada()
     if rodada%2==0:
       return "x"
     else:
@@ -54,7 +60,7 @@ class JogoDaVelha:
     ['1', '5', '9'],
     ]
     for i, (a, b, c) in enumerate(lines):
-      if self.tabuleiro[a] and self.tabuleiro[b] == self.tabuleiro[c]:
+      if self.tabuleiro[a] == self.tabuleiro[b] and self.tabuleiro[b] == self.tabuleiro[c]:
         return True
      
   def Velha(self):
@@ -63,9 +69,11 @@ class JogoDaVelha:
       if i == ' ':
          return True
 
-  def ValidarPosicao(self, posicao, rodada):
+  def ValidarPosicao(self, posicao):
+    rodada = self.getRodada()
     if self.tabuleiro[posicao] == ' ':
-      self.tabuleiro[posicao] == self.ProximoJogador
-      rodada += 1
+      valorJogador = self.ProximoJogador()
+      self.tabuleiro[posicao] = valorJogador
+      self.setRodada(rodada+1)
     else:
       print("Posicao invalida, jogue novamente")
