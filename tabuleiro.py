@@ -72,16 +72,16 @@ class JogoDaVelha:
   def Velha(self):
     for chave in range(1, 9):
       if self.tabuleiro[chave] == ' ':
-         print("entrou no if")
          return False
-    print("saiu do if")
     return True
 
   def ValidarPosicao(self, posicao):
     rodada = self.getRodada()
-    if self.tabuleiro[posicao] == ' ':
+    if posicao<1 or posicao > 9:
+      return print('Posicao invalida, jogue novamente')
+    elif self.tabuleiro[posicao] == ' ':
       valorJogador = self.ProximoJogador()
       self.tabuleiro[posicao] = valorJogador
       self.setRodada(rodada+1)
     else:
-      print("Posicao invalida, jogue novamente")
+      print("Posicao ja preenchida, jogue novamente")
