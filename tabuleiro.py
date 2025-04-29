@@ -28,6 +28,8 @@ class JogoDaVelha:
       while not self.Vencedor() and not self.Velha():
           self.ExibirTabuleiro()
           posicao = int(input(f"Vez de {self.ProximoJogador()}: "))
+          if posicao < 1 or posicao > 9:
+            print("Posição invalida, jogue novamente")
           self.ValidarPosicao(posicao)
 
       if self.Velha():
@@ -70,7 +72,7 @@ class JogoDaVelha:
         return True
     return False
   def Velha(self):
-    for chave in range(1, 9):
+    for chave in range(1, 10):
       if self.tabuleiro[chave] == ' ':
          return False
     return True
