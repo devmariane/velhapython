@@ -30,6 +30,7 @@ class JogoDaVelha:
           posicao = int(input(f"Vez de {self.ProximoJogador()}: "))
           if posicao < 1 or posicao > 9:
             print("Posição invalida, jogue novamente")
+        self.ValidarPosicao(posicao)
           
       if self.Velha():
         self.ExibirTabuleiro()
@@ -48,7 +49,6 @@ class JogoDaVelha:
         novojogo = input("Jogar novamente?(S/N)")
         if novojogo == 'N' or novojogo == 'n':
           jogardnv = False
-        self.ValidarPosicao(posicao)
   def ProximoJogador(self):
     rodada = self.getRodada()
     if rodada%2==0:
