@@ -39,6 +39,10 @@ class JogoDaVelha:
       else:
         self.ExibirTabuleiro()
         vencedor = self.ProximoJogador()
+        if vencedor == "x":
+          vencedor = "O"
+        else:
+          vencedor = "x"
         print(f"Fim de jogo vencedor: {vencedor}")
         novojogo = input("Jogar novamente?(S/N)")
         if novojogo == 'N' or novojogo == 'n':
@@ -66,9 +70,12 @@ class JogoDaVelha:
         return True
     return False
   def Velha(self):
-    for chave in sorted(self.tabuleiro):
+    for chave in range(1, 9):
       if self.tabuleiro[chave] == ' ':
+         print("entrou no if")
          return False
+    print("saiu do if")
+    return True
 
   def ValidarPosicao(self, posicao):
     rodada = self.getRodada()
