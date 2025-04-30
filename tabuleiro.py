@@ -14,13 +14,13 @@ class JogoDaVelha:
     self.rodada = numeroRodada
 
   def ExibirTabuleiro(self):
-    print("┌───┬───┬───┐")
-    print(f"│ {self.tabuleiro[7]} │ {self.tabuleiro[8]} │ {self.tabuleiro[9]} │")
-    print("├───┼───┼───┤")
-    print(f"│ {self.tabuleiro[4]} │ {self.tabuleiro[5]} │ {self.tabuleiro[6]} │")
-    print("├───┼───┼───┤")
-    print(f"│ {self.tabuleiro[1]} │ {self.tabuleiro[2]} │ {self.tabuleiro[3]} │")
-    print("└───┴───┴───┘")
+    print("|   |   |   |")
+    print(f"| {self.tabuleiro[7]} | {self.tabuleiro[8]} | {self.tabuleiro[9]} |")
+    print("|---|---|---|")
+    print(f"| {self.tabuleiro[4]} | {self.tabuleiro[5]} | {self.tabuleiro[6]} |")
+    print("|---|---|---|")
+    print(f"| {self.tabuleiro[1]} | {self.tabuleiro[2]} | {self.tabuleiro[3]} |")
+    print("|   |   |   |")
   
   def IniciarJogo(self):
      jogardnv = True
@@ -51,12 +51,15 @@ class JogoDaVelha:
         for zerar in range(1,10):
           self.tabuleiro[zerar] = ' '
         
+
   def ProximoJogador(self):
     rodada = self.getRodada()
     if rodada%2==0:
       return "x"
     else:
       return "O"
+    
+
   def Vencedor(self):
     lines = [
     [7, 8, 9],
